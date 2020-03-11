@@ -1,0 +1,162 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: lightgray;
+}
+#div1 {
+    width: 70%;
+}
+.generalNews {
+    border-top: #E02E3D solid 5px;
+}
+.sportNews {
+    border-top: #2891C8 solid 5px;
+}
+.ekonomiNews{
+    border-top: #F9AC17 solid 5px;
+}
+.container {
+    margin: 5%;
+    font-weight: 400;
+}
+h2 {
+    font-size: 2.5em;
+    margin: 0px;
+    margin-left: 2%;
+}
+h3 {
+    margin: 0px;
+    font-size: 1.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 2%;
+}
+input[type=text] {
+    border-radius: 5px;
+    border:2px solid #b3b3b3;
+    outline: none;
+    width: auto;
+    height: 30px;
+    padding-left: 5px;
+}
+.bannerContainer {
+    margin: 0px;
+    background-color: white;
+}
+.rubrikContainer {
+    margin: 0px;
+    background-color: white;
+}
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+/* .newsImg {
+
+} */
+.bildContainer {
+    width: 100%;
+    height: 400px;
+}
+.firstImg {
+    width: 70%;
+    height: 100%;
+}
+.secondImg {
+    width: 30%;
+    height: 100% ;
+}
+
+.addPictures {
+    display: inline-block;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+}
+.slideImg {
+    width: 100%;
+    height: 100%;
+}
+.slide::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.slide::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+.slide::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slide > div:target{
+  transform: scale(0.8);
+}
+.slideGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(4, 25%);
+}
+.slideLinkContainer {
+    position: absolute;
+    display: flex;
+    box-sizing: inherit;
+    justify-content: center;
+    /* margin-top: 87%;*/
+}
+.slideLink {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+}
+.slideLink:active {
+    top: 1px;
+    transition: ease-in-out;
+}
+.slideLink:focus {
+    background: #000;
+}
+@supports (scroll-snap-type) {
+  .slideLink{
+    display: none;
+  }
+}
+label {
+    display: none;
+}
+/* Media i trattform laptop till mobile eller mobile till laptop*/
+/*Tre bilder blir slideshow*/
+
+@media screen and (max-width: 600px) {
+    .flexbox {
+        flex-flow: column;
+        margin: 2%;
+    }
+    input[type="text"] {
+        width: 90%;
+    }
+    select {
+        width: 90%;
+    }
+}
