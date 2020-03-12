@@ -53,6 +53,8 @@ function buildArticle() {
     rubrikContainer.appendChild(rubrik);
     rubrik.appendChild(textRubrik);
     
+    //Change news color
+    container.className += article.newsType;
 
 }
 button.addEventListener("click", buildArticle);
