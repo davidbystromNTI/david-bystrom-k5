@@ -23,8 +23,38 @@ function readValuePictures() {
     let pictureArray = [];
     for (let i = 0; i < bilderInput.length; i++) {
         pictureArray[i] = bilderInput[i].value;
-    }   
+    }
     return pictureArray;
+}
+
+function createPictures() {
+    //Read in Picture(s)
+    let pictureArray = readValuePictures();
+    console.log(pictureArray);
+    
+    //Check if empty
+    if (pictureArray != ""){
+        //Create container for picture(s)
+        let bildContainer = document.createElement("div");
+        bildContainer.className += "bildContainer ";
+
+        //Check how many pictures
+        if (pictureArray.length > 1){
+            
+        }
+        else {        
+            //Creating Picture and appending attributes
+            let bild = document.createElement("img");
+            console.log(pictureArray[0]);
+            bild.src = pictureArray[0];
+            bild.className += "firstImg ";
+            
+            //Appendding picture too picture container
+            bildContainer.appendChild(bild);
+        }        
+        //Returning pictureContainer
+        return bildContainer;
+    }
 }
 
 function buildArticle() {
@@ -44,6 +74,10 @@ function buildArticle() {
     bannerContainer.appendChild(banner);
     banner.appendChild(textBanner);
 
+    //Create pictures and append it to container
+    let bildContainer = createPictures();
+    container.appendChild(bildContainer);
+
     //Create header and text and append it to the container
     let rubrik = document.createElement("h2");
     let textRubrik = document.createTextNode(article.headline);
@@ -55,6 +89,8 @@ function buildArticle() {
     
     //Change news color
     container.className += article.newsType;
+
+    
 
 }
 button.addEventListener("click", buildArticle);
