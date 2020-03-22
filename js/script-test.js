@@ -28,7 +28,7 @@ function readValuePictures() {
     return pictureArray;
 }
 
-function createPictures() {
+function createPictures(article) {
     //Read in Picture(s)
     let pictureArray = readValuePictures();
     console.log(pictureArray);
@@ -55,7 +55,7 @@ function createPictures() {
             for (let i = 0; i < pictureArray.length; i++) {
                 let slideContainer = document.createElement("div");
                 slideContainer.className += "slide ";
-                slideContainer.id += "slide-" + (i + 1) + "-" + pictureArray[i];
+                slideContainer.id += "slide-" + (i + 1) + "-" + article.banner;
                 slideShowContainer.appendChild(slideContainer);
 
                 let slideImg = document.createElement("img");
@@ -65,7 +65,7 @@ function createPictures() {
                 slideImg.className += "slideImg ";
 
                 let slideLink = document.createElement("a");
-                slideLink.href = "#slide-" + (i + 1) + "-" + pictureArray[i];
+                slideLink.href = "#slide-" + (i + 1) + "-" + article.banner;
                 slideLink.className += "slideLink ";
                 let slideLinkText = document.createTextNode((i + 1));
                 slideLink.appendChild(slideLinkText);
@@ -105,7 +105,7 @@ function buildArticle() {
     banner.appendChild(textBanner);
 
     //Create pictures and append it to container
-    let bildContainer = createPictures();
+    let bildContainer = createPictures(article);
     container.appendChild(bildContainer);
 
     //Create header and text and append it to the container
