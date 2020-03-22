@@ -9,6 +9,7 @@ let selectNews = document.querySelector("#newsType");
 let fleraBilder = document.querySelector("#flerBilder");
 let inputBox = document.querySelector("#inputBox");
 
+let newsArray = [];
 
 function createArticle() {
     //Read Picture input
@@ -87,6 +88,18 @@ function createPictures(article) {
     }
 }
 
+function JSONArticle(article) {
+    //Add Article to newsArray
+    newsArray.push(article);
+    
+    //Create JSON of newsArray
+    let myJSON = JSON.stringify(newsArray);
+
+    //Add JSON to localStorage
+    localStorage.setItem('news', myJSON);
+
+}
+
 function buildArticle() {
     let article = createArticle();
 
@@ -120,7 +133,8 @@ function buildArticle() {
     //Change news color
     container.className += article.newsType;
 
-    
+    //Create JSON of article and add to LocalStorage
+    JSONArticle(article);   
 
 }
 
