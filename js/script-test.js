@@ -23,6 +23,7 @@ function readValuePictures() {
     let pictureArray = [];
     for (let i = 0; i < bilderInput.length; i++) {
         pictureArray[i] = bilderInput[i].value;
+        //console.log(pictureArray[i]);
     }
     return pictureArray;
 }
@@ -40,7 +41,36 @@ function createPictures() {
 
         //Check how many pictures
         if (pictureArray.length > 1){
+            //Create Contanier for Slide Show
+            let slideShowContainer = document.createElement("div");
+            slideShowContainer.className += "slider ";
+            bildContainer.appendChild(slideShowContainer);
             
+            //Create contanier for slider links
+            let slideLinkContainer = document.createElement("div");
+            slideLinkContainer.className += "slideLinkContainer ";
+            slideShowContainer.appendChild(slideLinkContainer);
+            
+            //Create imgs and links for slideshow
+            for (let i = 0; i < pictureArray.length; i++) {
+                let slideContainer = document.createElement("div");
+                slideContainer.className += "slide ";
+                slideContainer.id += "slide-" + (i + 1) + "-" + pictureArray[i];
+                slideShowContainer.appendChild(slideContainer);
+
+                let slideImg = document.createElement("img");
+                slideImg.src = pictureArray[i];
+                slideContainer.appendChild(slideImg);
+                console.log(pictureArray[i]);
+                slideImg.className += "slideImg ";
+
+                let slideLink = document.createElement("a");
+                slideLink.href = "#slide-" + (i + 1) + "-" + pictureArray[i];
+                slideLink.className += "slideLink ";
+                let slideLinkText = document.createTextNode((i + 1));
+                slideLink.appendChild(slideLinkText);
+                slideLinkContainer.appendChild(slideLink);
+            }
         }
         else {        
             //Creating Picture and appending attributes
@@ -93,4 +123,16 @@ function buildArticle() {
     
 
 }
+
+function addPictureBox() {
+    //Create and add a new textbox for img URLs
+    let textbox = document.createElement("input");
+    textbox.type = "text";
+    textbox.placeholder = "Ange Bild URL...";
+    textbox.className += "inputBilder";
+    inputBox.appendChild(textbox);
+}
+
+//EventListeners
 button.addEventListener("click", buildArticle);
+fleraBilder.addEventListener("click", addPictureBox);
