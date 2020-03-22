@@ -30,7 +30,7 @@ function readValuePictures() {
 
 function createPictures(article) {
     //Read in Picture(s)
-    let pictureArray = readValuePictures();
+    let pictureArray = article.pictures;
     console.log(pictureArray);
     
     //Check if empty
