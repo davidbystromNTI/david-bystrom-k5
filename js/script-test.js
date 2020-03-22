@@ -192,6 +192,7 @@ function loadedPage () {
     
 }
 
+//Clears Storage and webpage
 function clearStorage() {
     localStorage.clear();
     newsArray = [];
