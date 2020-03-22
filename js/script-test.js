@@ -97,7 +97,6 @@ function JSONArticle(article) {
 
     //Add JSON to localStorage
     localStorage.setItem('news', myJSON);
-
 }
 
 function buildArticle() {
@@ -147,6 +146,52 @@ function addPictureBox() {
     inputBox.appendChild(textbox);
 }
 
+function loadedPage () {
+    //Get localStorage
+    let storageLocal = localStorage.getItem("news");
+
+    if (storageLocal != "") {
+        //Parse to script
+        let loadedJson = JSON.parse(storageLocal);
+
+        for (let i = 0; i < loadedJson.length; i++) {
+            //Create a div to act as a container and append it to div element
+            let container = document.createElement("div");
+            container.className += "container ";
+            element.appendChild(container);
+
+            //Create banner and text and append it to the container
+            let banner = document.createElement("h3");
+            let textBanner = document.createTextNode(loadedJson[i].banner);
+            let bannerContainer = document.createElement("div");
+            bannerContainer.className += "bannerContainer ";
+            container.appendChild(bannerContainer);
+            bannerContainer.appendChild(banner);
+            banner.appendChild(textBanner);
+
+            //Create pictures and append it to container
+            let bildContainer = createPictures(loadedJson[i]);
+            container.appendChild(bildContainer);
+
+            //Create header and text and append it to the container
+            let rubrik = document.createElement("h2");
+            let textRubrik = document.createTextNode(loadedJson[i].headline);
+            let rubrikContainer = document.createElement("div");
+            rubrikContainer.className += "rubrikContainer ";
+            container.appendChild(rubrikContainer);
+            rubrikContainer.appendChild(rubrik);
+            rubrik.appendChild(textRubrik);
+
+            //Change news color
+            container.className += loadedJson[i].newsType;
+
+            newsArray.push(loadedJson[i]);
+        }
+    }
+    
+}
+
 //EventListeners
 button.addEventListener("click", buildArticle);
 fleraBilder.addEventListener("click", addPictureBox);
+document.addEventListener('DOMContentLoaded', loadedPage);
