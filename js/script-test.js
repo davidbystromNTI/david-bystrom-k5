@@ -185,13 +185,21 @@ function loadedPage () {
             //Change news color
             container.className += loadedJson[i].newsType;
 
+            //Add loaded JSON to newsArray
             newsArray.push(loadedJson[i]);
         }
     }
     
 }
 
+function clearStorage() {
+    localStorage.clear();
+    newsArray = [];
+    location.reload();
+}
+
 //EventListeners
 button.addEventListener("click", buildArticle);
 fleraBilder.addEventListener("click", addPictureBox);
+clearBtn.addEventListener('click', clearStorage);
 document.addEventListener('DOMContentLoaded', loadedPage);
