@@ -103,31 +103,17 @@ function buildArticle() {
     let article = createArticle();
 
     //Create a div to act as a container and append it to div element
-    let container = document.createElement("div");
-    container.className += "container ";
-    element.appendChild(container);
-
+    let container = createContainer();
+    
     //Create banner and text and append it to the container
-    let banner = document.createElement("h3");
-    let textBanner = document.createTextNode(article.banner);
-    let bannerContainer = document.createElement("div");
-    bannerContainer.className += "bannerContainer ";
-    container.appendChild(bannerContainer);
-    bannerContainer.appendChild(banner);
-    banner.appendChild(textBanner);
+    createBanner(article, container);
 
     //Create pictures and append it to container
     let bildContainer = createPictures(article);
     container.appendChild(bildContainer);
 
     //Create header and text and append it to the container
-    let rubrik = document.createElement("h2");
-    let textRubrik = document.createTextNode(article.headline);
-    let rubrikContainer = document.createElement("div");
-    rubrikContainer.className += "rubrikContainer ";
-    container.appendChild(rubrikContainer);
-    rubrikContainer.appendChild(rubrik);
-    rubrik.appendChild(textRubrik);
+    createRubrik(article, container);
     
     //Change news color
     container.className += article.newsType;
@@ -149,38 +135,24 @@ function addPictureBox() {
 function loadedPage () {
     //Get localStorage
     let storageLocal = localStorage.getItem("news");
-
-    if (storageLocal != "") {
+    console.log(storageLocal);
+    if (storageLocal != null) {
         //Parse to script
         let loadedJson = JSON.parse(storageLocal);
 
         for (let i = 0; i < loadedJson.length; i++) {
             //Create a div to act as a container and append it to div element
-            let container = document.createElement("div");
-            container.className += "container ";
-            element.appendChild(container);
+            let container = createContainer();
 
             //Create banner and text and append it to the container
-            let banner = document.createElement("h3");
-            let textBanner = document.createTextNode(loadedJson[i].banner);
-            let bannerContainer = document.createElement("div");
-            bannerContainer.className += "bannerContainer ";
-            container.appendChild(bannerContainer);
-            bannerContainer.appendChild(banner);
-            banner.appendChild(textBanner);
+            createBanner(loadedJson[i], container);
 
             //Create pictures and append it to container
             let bildContainer = createPictures(loadedJson[i]);
             container.appendChild(bildContainer);
 
             //Create header and text and append it to the container
-            let rubrik = document.createElement("h2");
-            let textRubrik = document.createTextNode(loadedJson[i].headline);
-            let rubrikContainer = document.createElement("div");
-            rubrikContainer.className += "rubrikContainer ";
-            container.appendChild(rubrikContainer);
-            rubrikContainer.appendChild(rubrik);
-            rubrik.appendChild(textRubrik);
+            createRubrik(loadedJson[i], container);
 
             //Change news color
             container.className += loadedJson[i].newsType;
@@ -190,6 +162,37 @@ function loadedPage () {
         }
     }
     
+}
+
+//Creates Contanier for article
+function createContainer() {
+    let container = document.createElement("div");
+    container.className += "container ";
+    element.appendChild(container);
+
+    return container;
+}
+
+//Create banner and append it to contanier
+function createBanner(article, container) {
+    let banner = document.createElement("h3");
+    let textBanner = document.createTextNode(article.banner);
+    let bannerContainer = document.createElement("div");
+    bannerContainer.className += "bannerContainer ";
+    container.appendChild(bannerContainer);
+    bannerContainer.appendChild(banner);
+    banner.appendChild(textBanner);
+}
+
+//Create rubrik and append it to container
+function createRubrik(article, container) {
+    let rubrik = document.createElement("h2");
+    let textRubrik = document.createTextNode(article.headline);
+    let rubrikContainer = document.createElement("div");
+    rubrikContainer.className += "rubrikContainer ";
+    container.appendChild(rubrikContainer);
+    rubrikContainer.appendChild(rubrik);
+    rubrik.appendChild(textRubrik);
 }
 
 //Clears Storage and webpage
