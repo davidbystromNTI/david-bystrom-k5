@@ -135,7 +135,7 @@ function addPictureBox() {
 function loadedPage () {
     //Get localStorage
     let storageLocal = localStorage.getItem("news");
-    console.log(storageLocal);
+
     if (storageLocal != null) {
         //Parse to script
         let loadedJson = JSON.parse(storageLocal);
