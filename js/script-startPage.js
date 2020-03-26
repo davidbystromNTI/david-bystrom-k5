@@ -1,0 +1,1 @@
+const createAccount = document.querySelector('createAccount');
