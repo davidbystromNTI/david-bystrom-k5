@@ -8,7 +8,7 @@
     <title>Test</title>
     <script defer type="module" src="js/script-test.js"></script>
 </head>
-<body>
+<body onload="if (document.referrer == '') self.location='startPage.html';">
     <div class="flexbox">
         <div id="inputBox">
             <input title="Ange banner" type="text" id="bannerInput" placeholder="Ange Banner...">
