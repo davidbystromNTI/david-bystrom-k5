@@ -9,24 +9,32 @@
     <script defer type="module" src="js/login.js"></script>
 </head>
 <body>
-    <button type="button" id="createAccount">Create Account</button>
-    <form>
+    
+    <form action="php/welcome.php" method="post">
         <label for="usernameInput">Ange Username: </label>
-        <input id="usernameInput" type="text" placeholder="Username: ">
+        <input id="usernameInput" type="text" placeholder="Username: " name="username">
         <label for="passwordInput">Ange Password: </label>
-        <input id="passwordInput" type="password" placeholder="Password: ">
+        <input id="passwordInput" type="password" placeholder="Password: " name="passwd">
         <label for="emailInput">Ange Email: </label>
-        <input id="emailInput" type="email" placeholder="Email: ">
+        <input id="emailInput" type="email" placeholder="Email: " name="email">
         <label for="firstNameInput">Ange förnamn: </label>
-        <input id="firstNameInput" type="text" placeholder="Firstname: ">
+        <input id="firstNameInput" type="text" placeholder="Firstname: " name="firstName">
         <label for="lastNameInput">Ange efternamn: </label>
-        <input id="lastNameInput" type="text" placeholder="Lastname: ">
+        <input id="lastNameInput" type="text" placeholder="Lastname: " name="lastName">
 
-        <label for="usernameInputLogin">Ange Username: </label>
-        <input id="usernameInputLogin" type="text" placeholder="Username: ">
-        <label for="passwordInputLogin">Ange Password</label>
-        <input id="passwordInputLogin" type="text" placeholder="Password: ">
+        <button type="submit" id="createAccount">Create Account</button>
     </form>
-    <button type="button" id="login">Login</button>
+
+    <br>
+
+    <form action="php/login.php" method="post">
+        <label for="usernameInputLogin">Ange Username: </label>
+        <input id="usernameInputLogin" type="text" placeholder="Username: " name="UsernameLogin">
+        <label for="passwordInputLogin">Ange Password</label>
+        <input id="passwordInputLogin" type="text" placeholder="Password: " name="PasswdLogin">
+
+        <button type="submit" id="login" >Login</button>
+    </form>
+    
 </body>
 </html>
