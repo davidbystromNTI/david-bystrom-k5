@@ -9,18 +9,22 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT username, passwd FROM user WHERE BINARY username = '$Username' AND BINARY password = '$Passwd' ";
+$sql = "SELECT passwd FROM user WHERE BINARY username = '$Username'";
 $result = $conn->query($sql);
 
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-
-    echo "<p>" . "Username: " . $row["username"] . "</p>" . "<p>" . "Password: " . $row["password"] . "</p>";
+    
+    if (password_verify($password, $hash)) {
+        echo "Success!";
+        $score++;
+    }
+    else {
+        echo "Wrong Username or Password";
+    }
+    //echo "<p>" . "Username: " . $row["username"] . "</p>" . "<p>" . "Password: " . $row["password"] . "</p>";
     $score++;
-}
-else {
-    echo "Wrong Username or Password";
 }
 
 $conn->close();

@@ -10,6 +10,8 @@ $email = $_POST["email"];
 $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
 
+$hash = password_hash($passwd, PASSWORD_DEFAULT);
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -19,7 +21,7 @@ if ($conn->connect_error) {
 
 $stmt = $conn->prepare("insert into user(username, password, email, firstName, lastName)
 values(?, ?, ?, ?, ?)");
-$stmt-> bind_param("sssss", $usernameforUser, $passwd, $email, $firstName, $lastName);
+$stmt-> bind_param("sssss", $usernameforUser, $hash, $email, $firstName, $lastName);
 $stmt->execute();
 echo "Du äger";
 
