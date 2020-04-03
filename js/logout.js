@@ -1,7 +1,7 @@
-let logoutBtn = document.querySelector('#logout');
+let logoutBtn = document.querySelector("#logout");
 
 function logout () {
-    location.replace('../startPage.html');
+    window.location.href = "../startPage.html";
 }
 
 logoutBtn.addEventListener('click', logout);
